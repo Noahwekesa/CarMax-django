@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Noah wekesa" />
+
+    {% block 'title' %}
+    <title>CarMax - List Your Car Today!</title>
+    {% endblock %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom Style CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+    <!-- JQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    {% if messages %} {% for message in messages %}
+    <div
+      {%
+      if
+      message.tags
+      %}
+      class="alert alert-{{ message.tags }}"
+      {%
+      endif
+      %}
+    >
+      {{ message }}
+    </div>
+    {% endfor %} 
+    {% endif %}
+    {% block content %} 
+    {% endblock content %}
+  </body>
+</html>
