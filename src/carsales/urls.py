@@ -18,13 +18,21 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
-from pages.views import landing_view
+from pages.views import landing_view, list_cars
+from users.views import RegisterView, logout_view, profile
 
 urlpatterns = [
     path('', landing_view, name='home'),
+    path('list/', list_cars, name='list'),
+    path('profile', profile, name='profile'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', auth_views.LoginView.as_view(
+        template_name='users/login.html'), name='login'),
+    path('logout/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
 ]
-
-urlpatterns += static(settings.MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

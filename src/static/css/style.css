@@ -4,6 +4,7 @@
 .btn-secondary:focus {
   color: #333;
   text-shadow: none;
+  transition: 0.5s;
   /* Prevent inheritance from `body` */
 }
 

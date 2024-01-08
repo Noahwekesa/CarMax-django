@@ -7,7 +7,7 @@ class LocationAdmin(admin.ModelAdmin):
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['user', 'photo', 'bio', 'phone_number', 'location']
 
 
 admin.site.register(Profile, ProfileAdmin)

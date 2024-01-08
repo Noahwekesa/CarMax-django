@@ -20,15 +20,22 @@
       <ul
         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
       >
+<li>
+          <a href="{% url 'register' %}" class="nav-link px-2">Register</a>
+        </li> 
+      </ul>
+
+
+      <ul class="nav text-end">
         <li>
           <a href="{% url 'profile' %}" class="nav-link px-2">Profile</a>
-        </li>
-      </ul>
-      <div class="text-end">
+        </li> 
+      <li>
         <a type="button" href="{% url 'logout' %}" class="btn btn-danger"
           >Logout</a
         >
-      </div>
+        </li>
+      </ul>
       {% endif %}
     </div>
   </div>

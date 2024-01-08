@@ -26,6 +26,9 @@
   </head>
 
   <body>
+
+    {% include 'NavBar.html' %} 
+    <div class="container text-center mb-3">
     {% if messages %} {% for message in messages %}
     <div
       {%
@@ -36,10 +39,13 @@
       {%
       endif
       %}
+      role="alert"
     >
       {{ message }}
     </div>
-    {% endfor %} {% endif %} {% include 'NavBar.html' %} {% block content %} {%
-    endblock content %}
+    {% endfor %} {% endif %}
+    </div>
+    {% block content %} 
+    {% endblock content %}
   </body>
 </html>

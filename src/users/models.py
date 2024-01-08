@@ -10,7 +10,7 @@ class Location(models.Model):
     address_2 = models.CharField(max_length=128, blank=True)
 
     def __str__(self):
-        return f'Location {self.id}'
+        return f'{self.city}'
 
 
 class Profile(models.Model):
@@ -22,4 +22,4 @@ class Profile(models.Model):
         Location, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'{self.user.username}\'s Profile'
+        return f'{self.user}'
