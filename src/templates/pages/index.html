@@ -25,8 +25,14 @@
             <p class="lead">Looking to buy or sell a used car? We've got you
                 covered. </br> AutoMax is the leading used car marketplace.</p>
             <p class="lead">
-                <a href=""
+            {% if user.is_authenticated %}
+             <a href=""
+                    class="btn btn-lg btn-secondary fw-bold border-white bg-white">Browse Available Cars</a>
+             {% else %}
+                 <a href=""
                     class="btn btn-lg btn-secondary fw-bold border-white bg-white">Register</a>
+
+            {% endif %}
             </p>
         </main>
 <footer class="mt-auto text-white-50">

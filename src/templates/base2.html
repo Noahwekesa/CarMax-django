@@ -26,7 +26,20 @@
   </head>
 
   <body>
-    {% block content %} 
-    {% endblock content %}
+    {% if messages %} {% for message in messages %}
+    <div
+      {%
+      if
+      message.tags
+      %}
+      class="alert alert-{{ message.tags }}"
+      {%
+      endif
+      %}
+    >
+      {{ message }}
+    </div>
+    {% endfor %} {% endif %} {% include 'NavBar.html' %} {% block content %} {%
+    endblock content %}
   </body>
 </html>
