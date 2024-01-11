@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from pages.models import Listing
+
 
 def landing_view(request):
     context = {}
@@ -7,6 +9,8 @@ def landing_view(request):
 
 
 def list_cars(request):
+    listings = Listing.objects.all()
     context = {
+        'listings': listings
     }
-    return render(request, "pages/list.html", context)
+    return render(request, "pages/home.html", context)

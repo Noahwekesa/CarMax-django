@@ -36,7 +36,7 @@ class Listing(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.seller}'
+        return f'{self.seller} Listing - {self.model}'
 
 
 class LikedListing(models.Model):

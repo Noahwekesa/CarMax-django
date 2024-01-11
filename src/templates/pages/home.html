@@ -1,0 +1,42 @@
+{% extends "base2.html" %}
+{% load humanize %}
+{% block content %}
+<main>
+  <section class="py-5 container">
+<div class="row py-lg-5">
+  <div class="col-lg-6 col-md-8 mx-auto">
+    <h1 class="fw-light"> CarMax</h1>
+    <p class="lead text-muted">The Best place to buy or sell cars made made much easier.</p>
+    <a class="shadow-lg fw-bold btn btn-outline-primary my-2"> Sell Your Car</a>
+  </div>
+  <div class="col-lg-6 col-md-8 mx-auto">
+<!-- listing filter -->
+  </div>
+</div>
+  </section>
+  {% for listing in listings  %}
+  
+    <!-- all available listing -->
+<div class="album py-5 bg-light">
+  <div class="container">
+
+<!-- listing card -->
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="{{listing.image.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">
+{{listing.model}}</h5>
+
+        <p class="card-text">
+        {{listing.description|truncatechars:150}}
+        </p>
+        <p class="card-text"><small class="text-muted">{{listing.created_at|naturaltime}} </small></p>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+</main>
+{% endblock content %}

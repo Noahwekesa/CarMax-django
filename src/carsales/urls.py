@@ -25,7 +25,7 @@ from users.views import RegisterView, logout_view, profile
 
 urlpatterns = [
     path('', landing_view, name='home'),
-    path('list/', list_cars, name='list'),
+    path('home/', list_cars, name='list'),
     path('profile', profile, name='profile'),
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
