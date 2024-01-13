@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid text-center py-5">
+
+  <div class="conatiner px-4 py-5" id="hanging-icons">
+      <fieldset>
+        <legend>Sell Your Car</legend>
+      </fieldset>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-6">
+        <h4 ><u> Car Information</u></h4>
+          {{p_form|crispy}}
+      </div>
+      <div class="col-6">
+        <h4><u> Location </u></h4>
+          {{l_form|crispy}}
+      </div>
+
+       </div>
+<button type="button" class="shadow-sm btn btn-lg btn-primary" type="submit">Post</button>
+    </form>
+  </div>
+</div>
+{% endblock content%}

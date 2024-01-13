@@ -8,6 +8,11 @@
   /* Prevent inheritance from `body` */
 }
 
+#uniquea:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /*
  * Base structure
  */

@@ -1,7 +1,7 @@
 {% extends "base2.html" %}
+{% load static %}
 {% load humanize %}
 {% block content %}
-<main>
   <section class="py-5 container">
 <div class="row py-lg-5">
   <div class="col-lg-6 col-md-8 mx-auto">
@@ -14,29 +14,71 @@
   </div>
 </div>
   </section>
-  {% for listing in listings  %}
+ 
   
     <!-- all available listing -->
 <div class="album py-5 bg-light">
   <div class="container">
 
 <!-- listing card -->
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+     {% for listing in listings  %}
   <div class="col">
-    <div class="card">
+    <div class="card shadow-sm">
       <img src="{{listing.image.url}}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">
-{{listing.model}}</h5>
+<h5 class="card-title">
+  {{listing.model}}
+</h5>
+ <div class="row justify-content-start align-items-center">
+            <div class="col-1">
+                <img src="{{listing.seller.photo.url}}" class="rounded-circle" height="30" width="30"
+                    style="object-fit: cover;">
+            </div>
+            <div class="col-4">
+                <p class="card-text">{{listing.seller.user.username}}</p>
+            </div>
+        </div>
 
         <p class="card-text">
         {{listing.description|truncatechars:150}}
         </p>
+
+<div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <a href="" type="button"
+                    class="btn btn-md btn-outline-secondary">View</a>
+                {% if listing.seller.user == request.user %}
+                <a href="" type="button" class="btn btn-md btn-outline-secondary">Edit</a>
+                {% endif %}
+            </div>
+            </div>
         <p class="card-text"><small class="text-muted">{{listing.created_at|naturaltime}} </small></p>
+        <button  type="button" value="like" class="btn btn-secondary">
+                {% if listing.id in liked_listings_ids %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
+                    </path>
+                </svg>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
+                    </path>
+                </svg>
+                {% endif %}
+            </button>
       </div>
     </div>
   </div>
+
+    {% endfor %}
+</div> 
+
 </div>
-  {% endfor %}
-</main>
+</div>
+ 
 {% endblock content %}

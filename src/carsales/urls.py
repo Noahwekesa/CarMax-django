@@ -20,13 +20,14 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 
-from pages.views import landing_view, list_cars
+from pages.views import landing_view, list_cars, post_car
 from users.views import RegisterView, logout_view, profile
 
 urlpatterns = [
     path('', landing_view, name='home'),
     path('home/', list_cars, name='list'),
     path('profile', profile, name='profile'),
+    path('postcar/', post_car, name='postcar'),
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(
         template_name='users/login.html'), name='login'),

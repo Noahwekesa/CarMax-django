@@ -134,9 +134,9 @@ MEDIA_DIR = BASE_DIR / 'media'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'login/'
-LOGOUT_REDIRECT_URL = 'login/'
+LOGIN_REDIRECT_URL = 'list'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
 
 
 # Django Crispy Form Settings
