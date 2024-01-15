@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from pages.filters import ListingFilter
 from pages.forms import ListingForm
 from django.contrib import messages
 
@@ -14,8 +15,9 @@ def landing_view(request):
 
 def list_cars(request):
     listings = Listing.objects.all().order_by('-created_at')
+    listing_filter = ListingFilter(request.GET, queryset=listings)
     context = {
-        'listings': listings
+        'listing_filter': listing_filter
     }
     return render(request, "pages/home.html", context)
 
@@ -48,3 +50,9 @@ def post_car(request):
         'l_form': l_form
     }
     return render(request, 'pages/PostCarForm.html', context)
+
+
+def listing_view(request):
+    context = {
+    }
+    return render(request 'pages/listing.html', context)
