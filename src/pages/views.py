@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.core.checks import messages
 from django.shortcuts import redirect, render
 from pages.forms import ListingForm
+from django.contrib import messages
 
 from pages.models import Listing
 from users.forms import LocationForm
@@ -22,8 +22,27 @@ def list_cars(request):
 
 @login_required
 def post_car(request):
-    p_form = ListingForm()
-    l_form = LocationForm()
+    if request.method == 'POST':
+        try:
+            p_form = ListingForm(request.POST, request.FILES)
+            l_form = LocationForm(request.POST)
+            if p_form.is_valid and l_form.is_valid():
+                listing = p_form.save(commit=False)
+                l_form = l_form.save()
+                listing.seller = request.user.profile
+                listing.location = l_form
+                listing.save()
+                messages.info(
+                    request, f'{listing.model} was Posted Successfully! ')
+                return redirect('list')
+            else:
+                raise Exception()
+        except Exception as e:
+            print(e)
+            messages.error(request, 'An error occured while posting your car')
+    elif request.method == 'GET':
+        p_form = ListingForm()
+        l_form = LocationForm()
     context = {
         'p_form': p_form,
         'l_form': l_form

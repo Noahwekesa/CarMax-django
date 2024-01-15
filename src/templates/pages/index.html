@@ -18,7 +18,7 @@
                     {% else %}
 
                     <li class="mx-2">
-                    <a class="nav-link" href="">View Cars For sale</a>
+                    <a class="nav-link" href="{% url 'list' %}">View Cars For sale</a>
                     </li>
                     <li>
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
@@ -34,21 +34,21 @@
                 covered. </br> AutoMax is the leading used car marketplace.</p>
             <p class="lead">
             {% if user.is_authenticated %}
-             <a href=""
+             <a href="{% url 'list' %}"
                      class="btn btn-lg btn-outline-secondary fw-bold ">Browse Available Cars</a>
                 {% else %}
              <div class="col">
-<a href=""
+<a href="{% url 'list' %}"
                     class="btn btn-lg btn-outline-secondary fw-bold ">Browse Available Cars</a>
 
-                 <a href=""
+                 <a href="{% url 'list' %}"
                     class="btn btn-lg btn-outline-secondary fw-bold">Register</a>
 </div>
             {% endif %}
             </p>
         </main>
 <footer class="mt-auto text-white-50">
-            <p>Copyright © {% now 'Y' %} <a href="https://github.com/noahwekesa"
+            <p>Copyright © {% now 'Y' %} <a target="_blank" href="https://github.com/noahwekesa/CarMax-django"
                     class="text-white">sourcecode</a></p>
         </footer>
     </div>
