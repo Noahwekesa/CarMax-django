@@ -8,7 +8,7 @@ from .forms import UserRegisterForm
 
 
 def profile(request):
-    return render(request, 'users/profiles')
+    return render(request, 'users/profiles.html')
 
 
 def logout_view(request):

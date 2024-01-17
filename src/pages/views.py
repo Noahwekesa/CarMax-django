@@ -52,7 +52,15 @@ def post_car(request):
     return render(request, 'pages/PostCarForm.html', context)
 
 
-def listing_view(request):
-    context = {
-    }
-    return render(request 'pages/listing.html', context)
+def listing_view(request, id):
+    try:
+        listing = listing.objects.get(id=id):
+        if listing is None:
+            raise Exception
+        context = {
+            'listing': listing
+        }
+        return render(request, 'pages/listing.html', context)
+    except Exception as e:
+        messages.error(request, f'invalid UID {id} was provided for listing')
+        return redirect('list')
