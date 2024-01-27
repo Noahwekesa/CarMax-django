@@ -54,7 +54,7 @@ def post_car(request):
 
 def listing_view(request, id):
     try:
-        listing = listing.objects.get(id=id):
+        listing = Listing.objects.get(id=id)
         if listing is None:
             raise Exception
         context = {
